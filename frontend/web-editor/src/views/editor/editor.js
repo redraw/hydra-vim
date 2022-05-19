@@ -5,6 +5,7 @@ require('codemirror-minified/addon/hint/javascript-hint')
 require('codemirror-minified/addon/hint/show-hint')
 require('codemirror-minified/addon/selection/mark-selection')
 require('codemirror-minified/addon/comment/comment')
+require('codemirror-minified/keymap/vim')
 
 const EventEmitter = require('nanobus')
 const keymaps = require('./keymaps.js')
@@ -51,7 +52,8 @@ module.exports = class Editor extends EventEmitter {
       mode: { name: 'javascript', globalVars: true },
       lineWrapping: true,
       styleSelectedText: true,
-      extraKeys: extraKeys
+      extraKeys: extraKeys,
+      keyMap: "vim"
     }
 
     this.cm = CodeMirror.fromTextArea(parent, opts)

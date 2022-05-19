@@ -3,7 +3,7 @@ const repl = require('../views/editor/repl.js')
 
 
 module.exports = function store(state, emitter) {
-  state.showInfo = true
+  state.showInfo = false
   state.showUI = true
 
  let sketches
@@ -15,8 +15,6 @@ module.exports = function store(state, emitter) {
       repl.eval(code)
       if(sketchFromURL) {
         state.showInfo = false
-      } else {
-        state.showInfo = true
       }
       emitter.emit('render')
       // @todo create gallery store

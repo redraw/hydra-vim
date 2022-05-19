@@ -29,7 +29,7 @@ module.exports = class Hydra extends Component {
      osc().out()
 
     pb.init(hydra.captureStream, {
-      server: window.location.origin,
+      server: "https://hydra.ojack.xyz",
       room: 'iclc'
     })
 
