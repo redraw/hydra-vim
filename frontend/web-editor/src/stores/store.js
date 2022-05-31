@@ -108,6 +108,10 @@ module.exports = function store(state, emitter) {
     repl.eval(editor.getValue())
   })
 
+  emitter.on('popup:open', function () {
+    window.location.href += '&popup=1'
+  })
+
   emitter.on('show confirmation', function (count) {
 
   })

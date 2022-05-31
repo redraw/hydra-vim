@@ -15,6 +15,8 @@ module.exports = class Hydra extends Component {
   }
 
   load (element) {
+    const params = new URLSearchParams(window.location.search)
+
     let isIOS =
   (/iPad|iPhone|iPod/.test(navigator.platform) ||
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
@@ -23,7 +25,22 @@ module.exports = class Hydra extends Component {
 
     const pb = new PatchBay()
 
-    const hydra = new HydraSynth({ pb: pb, detectAudio: true, canvas: element.querySelector("canvas"), precision: precisionValue})
+    let canvas
+
+    if (params.get("popup")) {
+      const popup = window.open("","hydra",`width=500,height=300`);
+      popup.document.body.style = "background: black; margin: 0"
+      canvas = popup.document.createElement("canvas")
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      canvas.style = "imageRendering:pixelated; width:100%;height:100%"
+      popup.document.body.innerHTML = ""
+      popup.document.body.appendChild(canvas)
+    } else {
+      canvas = document.querySelector("canvas")
+    }
+
+    const hydra = new HydraSynth({ pb: pb, detectAudio: true, canvas: canvas, precision: precisionValue})
     // console.log(hydra)
     this.hydra = hydra
      osc().out()

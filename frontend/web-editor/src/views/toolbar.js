@@ -17,6 +17,7 @@ module.exports = function toolbar(state, emit) {
         ${icon("clear", `fa fa-trash ${hidden}`, t('toolbar.clear'), 'editor:clearAll')}
         ${icon("shuffle", `fa-random`, t('toolbar.shuffle'), 'gallery:showExample')}
         ${icon("mutator", `fa-dice ${hidden}`, t('toolbar.random'), 'editor:randomize')}
+        ${icon("popup", `fa-tv ${hidden}`, 'Popup', 'popup:open')}
         ${toggleInfo}
     </div>`
 }
